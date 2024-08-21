@@ -1,4 +1,4 @@
-package org.portmanager.portmanager;
+package org.amw.portmanager;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
