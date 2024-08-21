@@ -33,4 +33,7 @@ public class Ship {
 
     @ManyToOne
     private Port port;
+
+    @OneToOne
+    private Route route;
 }
