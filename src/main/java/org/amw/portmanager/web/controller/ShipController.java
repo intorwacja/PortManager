@@ -2,7 +2,7 @@ package org.amw.portmanager.web.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.amw.portmanager.domain.model.Ship;
-import org.amw.portmanager.service.ShipService;
+import org.amw.portmanager.application.service.ShipService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +22,7 @@ public class ShipController {
     }
 
     @GetMapping
+    @ResponseStatus(HttpStatus.OK)
     public List<Ship> getAllShips() {
         return shipService.getAllShips();
     }

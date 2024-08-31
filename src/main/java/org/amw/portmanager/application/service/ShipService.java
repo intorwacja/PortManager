@@ -1,4 +1,4 @@
-package org.amw.portmanager.service;
+package org.amw.portmanager.application.service;
 
 import lombok.RequiredArgsConstructor;
 import org.amw.portmanager.domain.model.Ship;
