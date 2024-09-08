@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.amw.portmanager.domain.ShipType;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -36,4 +37,8 @@ public class Ship {
 
     @OneToOne
     private Route route;
+
+    private LocalDateTime arrivalTime;
+
+    private LocalDateTime departureTime;
 }
