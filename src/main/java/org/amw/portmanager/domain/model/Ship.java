@@ -19,6 +19,9 @@ public class Ship {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(nullable = false, unique = true)
+    private String imoNumber;
+
     @Column(nullable = false)
     private String name;
 
@@ -41,4 +44,6 @@ public class Ship {
     private LocalDateTime arrivalTime;
 
     private LocalDateTime departureTime;
+
+    private double draft;
 }

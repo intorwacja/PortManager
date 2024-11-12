@@ -27,4 +27,6 @@ public class Port {
 
     @OneToMany
     private List<Ship> ships;
+
+    private double maxDraft;
 }
