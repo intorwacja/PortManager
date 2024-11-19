@@ -22,4 +22,8 @@ public class ShipService {
     public List<Ship> getAllShips() {
         return shipRepository.findAll();
     }
+
+    public Ship getShipByImoNumber(String imoNumber) {
+        return shipRepository.findByImoNumber(imoNumber).orElseThrow();
+    }
 }

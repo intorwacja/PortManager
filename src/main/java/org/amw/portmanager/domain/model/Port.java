@@ -19,6 +19,9 @@ public class Port {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(nullable = false, unique = true)
+    private String code;
+
     @Column(nullable = false)
     @Embedded
     private Location location;

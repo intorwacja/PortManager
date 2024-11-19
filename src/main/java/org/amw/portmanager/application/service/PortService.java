@@ -2,6 +2,7 @@ package org.amw.portmanager.application.service;
 
 import lombok.RequiredArgsConstructor;
 import org.amw.portmanager.domain.model.Port;
+import org.amw.portmanager.domain.model.Ship;
 import org.amw.portmanager.repository.PortRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,13 @@ public class PortService {
         return portRepository.findAll();
     }
 
-    public void addPort(Port port){
+    public void addPort(Port port) {
         portRepository.save(port);
+    }
+
+    public List<Ship> getAllShipsInPort(String code) {
+        Port port = portRepository.findByCode(code).orElseThrow();
+
+        return port.getShips();
     }
 }

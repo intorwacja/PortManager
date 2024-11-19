@@ -26,4 +26,11 @@ public class ShipController {
     public List<Ship> getAllShips() {
         return shipService.getAllShips();
     }
+
+    @GetMapping("/{imoNumber}")
+    @ResponseStatus(HttpStatus.OK)
+    public Ship getShipByImoNumber(@PathVariable("imoNumber") String imoNumber) {
+        return shipService.getShipByImoNumber(imoNumber);
+    }
+
 }

@@ -25,4 +25,8 @@ public class PortController {
     public void addPort(@RequestBody Port port) {
         portService.addPort(port);
     }
+
+    public void getShipsInPort(@RequestParam String code) {
+        portService.getAllShipsInPort(code);
+    }
 }
