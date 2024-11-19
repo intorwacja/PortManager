@@ -1,5 +1,6 @@
 package org.amw.portmanager.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.amw.portmanager.domain.ShipType;
@@ -36,6 +37,7 @@ public class Ship {
     private double height;
 
     @ManyToOne
+    @JsonBackReference
     private Port port;
 
     @OneToOne

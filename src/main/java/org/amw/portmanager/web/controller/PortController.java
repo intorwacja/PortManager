@@ -3,6 +3,7 @@ package org.amw.portmanager.web.controller;
 import lombok.RequiredArgsConstructor;
 import org.amw.portmanager.application.service.PortService;
 import org.amw.portmanager.domain.model.Port;
+import org.amw.portmanager.domain.model.Ship;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,16 @@ public class PortController {
         portService.addPort(port);
     }
 
-    public void getShipsInPort(@RequestParam String code) {
-        portService.getAllShipsInPort(code);
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/{code}/ships")
+    public List<Ship> getShipsInPort(@PathVariable String code) {
+        return portService.getAllShipsInPort(code);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/{code}/addShip")
+    public void addShipToPort(@PathVariable String code, @RequestParam String imoNumber) {
+        Port port = portService.getPortByCode(code);
+        portService.addShipToPort(port, imoNumber);
     }
 }
