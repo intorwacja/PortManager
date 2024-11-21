@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.amw.portmanager.application.validation.ship.ShipValidatorService;
 import org.amw.portmanager.domain.model.Ship;
 import org.amw.portmanager.repository.ShipRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,5 +26,17 @@ public class ShipService {
 
     public Ship getShipByImoNumber(String imoNumber) {
         return shipRepository.findByImoNumber(imoNumber).orElseThrow();
+    }
+
+    public void deleteShipByImoNumber(String imoNumber) {
+        shipRepository.findByImoNumber(imoNumber).ifPresent(shipRepository::delete);
+    }
+
+    public void updateShip(String imoNumber, Ship ship) {
+        Ship actualShip = shipRepository.findByImoNumber(imoNumber).orElseThrow();
+
+        BeanUtils.copyProperties(ship, actualShip, "id");
+
+        shipRepository.save(actualShip);
     }
 }

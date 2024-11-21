@@ -34,7 +34,7 @@ public class PortController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/{code}/addShip")
+    @PostMapping("/{code}/ships")
     public void addShipToPort(@PathVariable String code, @RequestParam String imoNumber) {
         Port port = portService.getPortByCode(code);
         portService.addShipToPort(port, imoNumber);
