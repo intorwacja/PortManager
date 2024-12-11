@@ -35,8 +35,15 @@ public class PortController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/{code}/ships")
-    public void addShipToPort(@PathVariable String code, @RequestParam String imoNumber) {
+    public void addShipToPort(@PathVariable String code, @RequestBody String imoNumber) {
         Port port = portService.getPortByCode(code);
         portService.addShipToPort(port, imoNumber);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/{code}/ships")
+    public void deleteShipFromPort(@PathVariable String code, @RequestParam String imoNumber){
+        Port port = portService.getPortByCode(code);
+        portService.deleteShip(port, imoNumber);
     }
 }

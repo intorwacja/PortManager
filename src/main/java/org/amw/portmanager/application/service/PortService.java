@@ -1,5 +1,7 @@
 package org.amw.portmanager.application.service;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
 import org.amw.portmanager.domain.model.Port;
 import org.amw.portmanager.domain.model.Ship;
@@ -34,10 +36,17 @@ public class PortService {
     }
 
     public void addShipToPort(Port port, String imoNumber) {
+        JsonObject jsonObject = JsonParser.parseString(imoNumber).getAsJsonObject();
+        imoNumber = jsonObject.get("imoNumber").getAsString();
         Ship ship = shipRepository.findByImoNumber(imoNumber).orElseThrow();
         port.getShips().add(ship);
         ship.setPort(port);
         shipRepository.save(ship);
+        portRepository.save(port);
+    }
+
+    public void deleteShip(Port port, String imoNumber) {
+        port.getShips().removeIf(ship -> ship.getImoNumber().equals(imoNumber));
         portRepository.save(port);
     }
 }
