@@ -53,4 +53,16 @@ public class ShipController {
         shipService.updateShip(imoNumber, ship);
     }
 
+    @PostMapping("/{imoNumber}")
+    @ResponseStatus(HttpStatus.OK)
+    public void addPortToShip(@PathVariable("imoNumber") String imoNumber,@RequestParam String portCode) {
+        shipService.addPortToShip(imoNumber, portCode);
+    }
+
+    @GetMapping("/{imoNumber}/port")
+    @ResponseStatus(HttpStatus.OK)
+    public String getPortCodeOfShip(@PathVariable("imoNumber") String imoNumber) {
+        return shipService.getPortCodeOfShip(imoNumber);
+    }
+
 }

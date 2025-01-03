@@ -36,7 +36,7 @@ public class Ship {
     private double width;
     private double height;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JsonBackReference
     private Port port;
 

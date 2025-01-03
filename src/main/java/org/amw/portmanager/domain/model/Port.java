@@ -29,7 +29,7 @@ public class Port {
 
     private int shipCapacity;
 
-    @OneToMany
+    @OneToMany(mappedBy = "port", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Ship> ships;
 
