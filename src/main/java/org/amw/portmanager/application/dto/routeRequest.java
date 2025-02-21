@@ -1,6 +1,6 @@
 package org.amw.portmanager.application.dto;
 
-import org.amw.portmanager.domain.dto.Location;
+import org.amw.portmanager.domain.model.Location;
 import org.amw.portmanager.domain.model.Ship;
 
 import java.util.UUID;

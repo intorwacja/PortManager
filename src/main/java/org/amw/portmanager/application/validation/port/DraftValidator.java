@@ -11,7 +11,7 @@ import java.util.Map;
 class DraftValidator implements PortValidator {
 
     @Override
-    public Map<String, String> validateShip(Ship ship, Port port) {
+    public Map<String, String> validate(Ship ship, Port port) {
 
         Map<String, String> errors = new HashMap<>();
 

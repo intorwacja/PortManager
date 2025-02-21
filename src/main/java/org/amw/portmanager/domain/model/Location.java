@@ -1,4 +1,4 @@
-package org.amw.portmanager.domain.dto;
+package org.amw.portmanager.domain.model;
 
 import jakarta.persistence.Embeddable;
 

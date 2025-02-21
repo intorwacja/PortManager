@@ -7,5 +7,5 @@ import java.util.Map;
 
 @FunctionalInterface
 interface PortValidator {
-    Map<String, String> validateShip(Ship ship, Port port);
+    Map<String, String> validate(Ship ship, Port port);
 }

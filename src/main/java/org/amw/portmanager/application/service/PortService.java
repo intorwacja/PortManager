@@ -3,6 +3,7 @@ package org.amw.portmanager.application.service;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
+import org.amw.portmanager.application.validation.port.PortValidatorService;
 import org.amw.portmanager.domain.model.Port;
 import org.amw.portmanager.domain.model.Ship;
 import org.amw.portmanager.repository.PortRepository;
@@ -16,6 +17,7 @@ import java.util.List;
 public class PortService {
     private final PortRepository portRepository;
     private final ShipRepository shipRepository;
+    private final PortValidatorService portValidatorService;
 
     public List<Port> getAllPorts() {
         return portRepository.findAll();
@@ -39,6 +41,9 @@ public class PortService {
         JsonObject jsonObject = JsonParser.parseString(imoNumber).getAsJsonObject();
         imoNumber = jsonObject.get("imoNumber").getAsString();
         Ship ship = shipRepository.findByImoNumber(imoNumber).orElseThrow();
+
+        portValidatorService.validate(port, ship);
+
         port.getShips().add(ship);
         ship.setPort(port);
         shipRepository.save(ship);

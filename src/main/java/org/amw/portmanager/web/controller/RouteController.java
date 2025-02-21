@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/v1/routes")
+@RequestMapping("/api/v1/routes")
 public class RouteController {
     private final RouteService routeService;
 

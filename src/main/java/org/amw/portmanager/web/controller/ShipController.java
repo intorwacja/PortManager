@@ -65,4 +65,13 @@ public class ShipController {
         return shipService.getPortCodeOfShip(imoNumber);
     }
 
+    @GetMapping("/location")
+    @ResponseStatus(HttpStatus.OK)
+    public String getLocationOfShip(@RequestParam String imoNumber) {
+        return shipService.getShipLocation(imoNumber);
+    }
+
+
+
+
 }
