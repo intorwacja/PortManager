@@ -76,21 +76,54 @@ public class ShipService {
     }
 
     public String getShipLocation(String imoNumber) {
-        imoNumber = imoNumber.substring(3);
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://api.vesselfinder.com/vessels?userkey="+ getVesselFinderApiKey()
-                        + "&imo=" + imoNumber))
-                .GET()
-                .build();
+//        imoNumber = imoNumber.substring(3);
+//        HttpRequest request = HttpRequest.newBuilder()
+//                .uri(URI.create("https://api.vesselfinder.com/vessels?userkey="+ getVesselFinderApiKey()
+//                        + "&imo=" + imoNumber))
+//                .GET()
+//                .build();
+//
+//        HttpResponse<String> response;
+//
+//        try {
+//            response = client.send(request, HttpResponse.BodyHandlers.ofString());
+//        } catch (IOException | InterruptedException e) {
+//            throw new FetchVesselDataException(e.getMessage());
+//        }
+//
+//        return response.body();
 
-        HttpResponse<String> response;
-
-        try {
-            response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (IOException | InterruptedException e) {
-            throw new FetchVesselDataException(e.getMessage());
-        }
-
-        return response.body();
+        return "[\n" +
+                "    {\n" +
+                "        \"AIS\": {\n" +
+                "            \"MMSI\": 304491000,\n" +
+                "            \"TIMESTAMP\": \"2017-08-11 11:15:15 UTC\",\n" +
+                "            \"LATITUDE\": 54.5910,\n" +
+                "            \"LONGITUDE\": 18.8998,\n" +
+                "            \"COURSE\": 285.6,\n" +
+                "            \"SPEED\": 14.0,\n" +
+                "            \"HEADING\": 286,\n" +
+                "            \"NAVSTAT\": 0,\n" +
+                "            \"IMO\": 9175717,\n" +
+                "            \"NAME\": \"MARENO\",\n" +
+                "            \"CALLSIGN\": \"V2BC5\",\n" +
+                "            \"TYPE\": 70,\n" +
+                "            \"A\": 133,\n" +
+                "            \"B\": 20,\n" +
+                "            \"C\": 14,\n" +
+                "            \"D\": 11,\n" +
+                "            \"DRAUGHT\": 8.7,\n" +
+                "            \"DESTINATION\": \"GDYNIA\",\n" +
+                "            \"LOCODE\": \"PLGDY\",\n" +
+                "            \"ETA_AIS\": \"08-12 03:00\",\n" +
+                "            \"ETA\": \"2017-08-12 03:00:00\",\n" +
+                "            \"SRC\": \"TER\",\n" +
+                "            \"ZONE\": \"Baltic Sea\",\n" +
+                "            \"ECA\": true,\n" +
+                "            \"DISTANCE_REMAINING\": 5.0,\n" +
+                "            \"ETA_PREDICTED\": \"2017-08-11 12:00:00\"\n" +
+                "        }\n" +
+                "    }\n" +
+                "]";
     }
 }
